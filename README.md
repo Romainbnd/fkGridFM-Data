@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 # Power Flow Data Generation Script
 
 This library generates power flow data with configurable parameters for load scenarios and topology perturbations.
@@ -76,7 +73,3 @@ python dist_generate_pf_data.py --config path/to/config.yaml --data_path /path/t
 |                          | `overwrite`                  | bool     | If true, overwrites existing files.                                                                |
 
 **Disclaimer:** Not all parameters are relevant depending on the choice of `type` for topology perturbation and `generator` for load. Please refer to the specific configuration requirements for your use case.
-=======
-# GridFM-Data
-A library that generates power flow data with configurable parameters for load scenarios and topology perturbations.
->>>>>>> 33f74ca12217a2de39ca85dd697daa2bc2a3cf92
