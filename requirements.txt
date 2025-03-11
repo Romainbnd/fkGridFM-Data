@@ -1,0 +1,11 @@
+nbformat
+matplotlib
+pandapower
+plotly
+pandas
+numpy
+ipykernel
+pathlib
+matpowercaseframes
+numba
+requests
