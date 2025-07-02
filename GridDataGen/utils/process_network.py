@@ -182,14 +182,21 @@ def process_scenario(
     """
     net.load.p_mw = scenarios[net.load.bus, scenario_index, 0]
     net.load.q_mvar = scenarios[net.load.bus, scenario_index, 1]
+    print(f"[DEBUG] Affectation des charges réussie")
+    print(f"[DEBUG] Scénario {scenario_index} – Total charge P = {net.load.p_mw.sum():.2f} MW, Q = {net.load.q_mvar.sum():.2f} MVAr")
+
     # Generate perturbed topologies
     perturbed_topologies = generator.generate(net)
+    perturbed_topologies_bis = list(generator.generate(net))
+
+    print(f"[DEBUG] {len(perturbed_topologies_bis)} topologies générées pour scénario {scenario_index}")
 
     for perturbed_topology in perturbed_topologies:
-
+        print(f"[DEBUG] → Tentative OPF sur une topologie perturbée pour scénario {scenario_index}")
         try:
             run_opf(perturbed_topology)
         except Exception as e:
+            print(f"[❌] OPF échoué pour scénario {scenario_index} : {e}")
             with open(error_log_file, "a") as f:
                 f.write(
                     f"Caught an exception at scenario {scenario_index} in run_opf function: {e}\n"
